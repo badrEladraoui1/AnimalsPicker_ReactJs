@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Lion",
+        "image": {
+            "src": "lion.jpg",
+            "alt": "Lion"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Elephant",
+        "image": {
+            "src": "elephant.jpg",
+            "alt": "Elephant"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Tiger",
+        "image": {
+            "src": "tiger.jpg",
+            "alt": "Tiger"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Giraffe",
+        "image": {
+            "src": "giraffe.jpg",
+            "alt": "Giraffe"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Zebra",
+        "image": {
+            "src": "zebra.jpg",
+            "alt": "Zebra"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Hippo",
+        "image": {
+            "src": "hippo.jpg",
+            "alt": "Hippo"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Gorilla",
+        "image": {
+            "src": "gorilla.jpg",
+            "alt": "Gorilla"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Kangaroo",
+        "image": {
+            "src": "kangaroo.jpg",
+            "alt": "Kangaroo"
+        }
+    },
+    {
+        "id": 11,
+        "name": "Dolphin",
+        "image": {
+            "src": "dolphin.jpg",
+            "alt": "Dolphin"
+        }
+    },
+    {
+        "id": 14,
+        "name": "Owl",
+        "image": {
+            "src": "owl.jpg",
+            "alt": "Owl"
+        }
+    }
+]

@@ -1,25 +1,16 @@
-import { useContext } from "react";
-import { AppContext } from "../store/app-context";
+// import { useContext } from "react";
+// import { AppContext } from "../store/app-context";
 
-import Animal from "./Animal";
+import Animals from "./Animals";
+import AvailableAnimals from "./AvailableAnimals";
+import AlertDialogDemo from "./ui/Modal";
 
 const Main = () => {
-  const { animals } = useContext(AppContext);
-
-  // console.log("Main : ", animals);
-
   return (
-    <section>
-      <div>
-        {animals.map((animal) => (
-          <Animal
-            key={animal.id}
-            name={animal.name}
-            imgSrc={animal.image.src}
-            imgAlt={animal.image.alt}
-          />
-        ))}
-      </div>
+    <section className="flex gap-10">
+      <AvailableAnimals props="after" />
+      <AlertDialogDemo />
+      <Animals props="after" />
     </section>
   );
 };

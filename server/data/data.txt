@@ -1,29 +1,4 @@
-[
     {
-        "id": 1,
-        "name": "Lion",
-        "image": {
-            "src": "lion.jpg",
-            "alt": "Lion"
-        }
-    },
-    {
-        "id": 2,
-        "name": "Elephant",
-        "image": {
-            "src": "elephant.jpg",
-            "alt": "Elephant"
-        }
-    },
-    {
-        "id": 3,
-        "name": "Tiger",
-        "image": {
-            "src": "tiger.jpg",
-            "alt": "Tiger"
-        }
-    },
-            {
         "id": 4,
         "name": "Giraffe",
         "image": {
@@ -79,5 +54,3 @@
             "alt": "Owl"
         }
     }
-
-]

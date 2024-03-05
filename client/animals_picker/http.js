@@ -7,6 +7,21 @@ export async function fetchingAnimals() {
       throw new Error("Failed to fetch animals");
     }
     const resData = await response.json();
+    // console.log(resData.animals);
+    return resData.animals;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function fetchingUserAnimals() {
+  try {
+    const response = await fetch(`${HOST}/user-animals`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch user animals");
+    }
+    const resData = await response.json();
     console.log(resData.animals);
     return resData.animals;
   } catch (error) {

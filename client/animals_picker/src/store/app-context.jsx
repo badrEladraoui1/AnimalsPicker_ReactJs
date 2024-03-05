@@ -1,23 +1,55 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { createContext } from "react";
+import { createContext, useRef, useState } from "react";
 import { fetchingAnimals } from "../../http";
+import { fetchingUserAnimals } from "../../http";
 import { useFetch } from "../hooks/useFetch";
 
 export const AppContext = createContext({
   animals: [],
+  userAnimals: [],
+  onSelectAnimal: () => {},
+  onStartRemoveAnimal: () => {},
 });
 
 export default function ContextProvider({ children }) {
+  const animalRefSelected = useRef();
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const onSelectAnimal = (animalSelected) => {
+    setUserAnimals((prevAnimals) => {
+      if (!prevAnimals) return [];
+      if (prevAnimals.some((animal) => animal.id === animalSelected.id)) {
+        return prevAnimals;
+      } else {
+        return [...prevAnimals, animalSelected];
+      }
+    });
+  };
+
+  const onStartRemoveAnimal = (animal) => {};
+
   const {
-    isFetching,
-    error,
+    isFetching: isFetchingAnimals,
+    error: animalsError,
     dataFetched: animals,
     setDataFetched: setAnimals,
   } = useFetch(fetchingAnimals, []);
 
+  const {
+    isFetching: isFetchingUserAnimals,
+    error: userAnimalsError,
+    dataFetched: userAnimals,
+    setDataFetched: setUserAnimals,
+  } = useFetch(fetchingUserAnimals, []);
+
+  // console.log(userAnimals);
+
   const ctxValues = {
     animals: animals,
+    onSelectAnimal: onSelectAnimal,
+    userAnimals: userAnimals,
+    onStartRemoveAnimal: onStartRemoveAnimal,
   };
 
   // console.log("AppContext : ", ctxValues.animals);

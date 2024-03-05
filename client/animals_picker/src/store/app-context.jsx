@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { fetchingAnimals } from "../../http";
 import { useFetch } from "../hooks/useFetch";
 
@@ -7,9 +8,7 @@ export const AppContext = createContext({
   animals: [],
 });
 
-export default function ContextProvider() {
-  //   const [animals, setAnimals] = useState([]);
-
+export default function ContextProvider({ children }) {
   const {
     isFetching,
     error,
@@ -21,5 +20,9 @@ export default function ContextProvider() {
     animals: animals,
   };
 
-  return <AppContext.Provider value={ctxValues} />;
+  // console.log("AppContext : ", ctxValues.animals);
+
+  return (
+    <AppContext.Provider value={ctxValues}>{children}</AppContext.Provider>
+  );
 }

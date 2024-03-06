@@ -22,7 +22,7 @@ export async function fetchingUserAnimals() {
       throw new Error("Failed to fetch user animals");
     }
     const resData = await response.json();
-    console.log(resData.animals);
+    // console.log(resData.animals);
     return resData.animals;
   } catch (error) {
     console.log(error);
@@ -31,7 +31,7 @@ export async function fetchingUserAnimals() {
 }
 
 export async function updateAnimaPlaces(animals) {
-  const response = await fetch("http://localhost:3000/user-animals", {
+  const response = await fetch(`${HOST}/user-animals`, {
     method: "PUT",
     body: JSON.stringify({ animals: animals }),
     headers: {

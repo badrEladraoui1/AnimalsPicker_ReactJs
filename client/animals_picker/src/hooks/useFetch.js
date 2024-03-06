@@ -8,9 +8,8 @@ export function useFetch(fetchingFunction, initialValue) {
   useEffect(() => {
     async function fetchingData() {
       setIsFetching(true);
-      const data = await fetchingFunction();
-
       try {
+        const data = await fetchingFunction();
         setDataFetched(data);
       } catch (error) {
         setError({

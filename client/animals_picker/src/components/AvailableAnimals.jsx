@@ -3,15 +3,28 @@
 import { useContext } from "react";
 import { AppContext } from "../store/app-context";
 
+import Error from "./ui/Error";
+import Loading from "./ui/Loading";
+import { styles } from "../assets/commonStyles";
+
 // #4c4c4c
 
 import Animal from "./Animal";
 
 const AvailableAnimals = ({ props }) => {
-  const { animals, onSelectAnimal } = useContext(AppContext);
+  const { animals, onSelectAnimal, animalsError, isFetchingUserAnimals } =
+    useContext(AppContext);
+
+  if (animalsError) {
+    return <Error message="Failed to fetch Available Animals Data ..." />;
+  }
+
+  if (isFetchingUserAnimals) {
+    return <Loading message="Fetching Available Animals " />;
+  }
 
   return (
-    <article className="w-1/2 text-center flex flex-col items-center  md:grid md:grid-cols-2  md:items-start lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-4 2xl:grid 2xl:grid-cols-5 gap-0 container p-1">
+    <article className={styles}>
       {animals.map((animal) => (
         <Animal
           key={animal.id}

@@ -5,17 +5,31 @@ import { AppContext } from "../store/app-context";
 
 import Animal from "./Animal";
 import Loading from "./ui/Loading";
+import Error from "./ui/Error";
+import { styles } from "../assets/commonStyles";
 
 const Animals = ({ props }) => {
-  const { userAnimals, onStartRemoveAnimal, isFetchingAnimals } =
-    useContext(AppContext);
+  const {
+    userAnimals,
+    onStartRemoveAnimal,
+    isFetchingAnimals,
+    userAnimalsError,
+  } = useContext(AppContext);
+
+  if (userAnimals.length <= 0) {
+    return "";
+  }
+
+  if (userAnimalsError) {
+    return <Error message="Failed to fetch Animals Data ..." />;
+  }
 
   if (isFetchingAnimals) {
-    return <Loading />;
+    return <Loading message="Failed to fetch Animals Data ..." />;
   }
 
   return (
-    <article className="w-1/2 text-center flex flex-col items-center  md:grid md:grid-cols-2  md:items-start lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-4 2xl:grid 2xl:grid-cols-5 gap-0 container p-1">
+    <article className={styles}>
       {userAnimals.map((userAnimal) => (
         <Animal
           key={userAnimal.id}

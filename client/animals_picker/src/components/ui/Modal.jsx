@@ -1,34 +1,30 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/Button";
+import { createPortal } from "react-dom";
+import { useContext, useEffect, useRef } from "react";
+import { AppContext } from "@/store/app-context";
+import { Button } from "./Button";
 
-export function AlertDialogDemo() {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            Do you want to remove this animal
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Remove</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+const Modal = () => {
+  const dialogRef = useRef();
+  const { modalOpen, onCancelRemoveAnimal } = useContext(AppContext);
+
+  useEffect(() => {
+    if (modalOpen) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [modalOpen]);
+
+  return createPortal(
+    <dialog className="p-5 rounded-md" ref={dialogRef}>
+      <h1 className="font-bold">Remove animal ?</h1>
+      <div className="flex gap-2">
+        <Button onClick={onCancelRemoveAnimal}>Cancel</Button>
+        <Button>Remove</Button>
+      </div>
+    </dialog>,
+    document.getElementById("modal")
   );
-}
+};
+
+export default Modal;

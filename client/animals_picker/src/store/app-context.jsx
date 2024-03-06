@@ -8,8 +8,10 @@ import { useFetch } from "../hooks/useFetch";
 export const AppContext = createContext({
   animals: [],
   userAnimals: [],
+  modalOpen: "",
   onSelectAnimal: () => {},
   onStartRemoveAnimal: () => {},
+  onCancelRemoveAnimal: () => {},
 });
 
 export default function ContextProvider({ children }) {
@@ -27,7 +29,13 @@ export default function ContextProvider({ children }) {
     });
   };
 
-  const onStartRemoveAnimal = (animal) => {};
+  const onStartRemoveAnimal = (animal) => {
+    setModalOpen(true);
+  };
+
+  const onCancelRemoveAnimal = () => {
+    setModalOpen(false);
+  };
 
   const {
     isFetching: isFetchingAnimals,
@@ -50,6 +58,8 @@ export default function ContextProvider({ children }) {
     onSelectAnimal: onSelectAnimal,
     userAnimals: userAnimals,
     onStartRemoveAnimal: onStartRemoveAnimal,
+    modalOpen: modalOpen,
+    onCancelRemoveAnimal: onCancelRemoveAnimal,
   };
 
   // console.log("AppContext : ", ctxValues.animals);

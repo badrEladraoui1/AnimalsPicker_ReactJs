@@ -3,13 +3,13 @@
 
 import Animals from "./Animals";
 import AvailableAnimals from "./AvailableAnimals";
-import AlertDialogDemo from "./ui/Modal";
+import Modal from "./ui/Modal";
 
 const Main = () => {
   return (
     <section className="flex gap-10">
+      <Modal />
       <AvailableAnimals props="after" />
-      <AlertDialogDemo />
       <Animals props="after" />
     </section>
   );

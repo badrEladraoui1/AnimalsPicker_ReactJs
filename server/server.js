@@ -16,6 +16,10 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.get("/", async (req, res) => {
+//   res.send("hi");
+// });
+
 app.get("/animals", async (req, res) => {
   const fileContent = await fs.readFile("./data/animals.json");
 

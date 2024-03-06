@@ -5,7 +5,8 @@ import { Button } from "./Button";
 
 const Modal = () => {
   const dialogRef = useRef();
-  const { modalOpen, onCancelRemoveAnimal } = useContext(AppContext);
+  const { modalOpen, onCancelRemoveAnimal, onRemoveAnimal } =
+    useContext(AppContext);
 
   useEffect(() => {
     if (modalOpen) {
@@ -20,7 +21,7 @@ const Modal = () => {
       <h1 className="font-bold">Remove animal ?</h1>
       <div className="flex gap-2">
         <Button onClick={onCancelRemoveAnimal}>Cancel</Button>
-        <Button>Remove</Button>
+        <Button onClick={onRemoveAnimal}>Remove</Button>
       </div>
     </dialog>,
     document.getElementById("modal")

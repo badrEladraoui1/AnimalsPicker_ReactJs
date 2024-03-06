@@ -29,3 +29,21 @@ export async function fetchingUserAnimals() {
     throw error;
   }
 }
+
+export async function updateAnimaPlaces(animals) {
+  const response = await fetch("http://localhost:3000/user-animals", {
+    method: "PUT",
+    body: JSON.stringify({ animals: animals }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Failed to update user data.");
+  }
+
+  return resData.message;
+}

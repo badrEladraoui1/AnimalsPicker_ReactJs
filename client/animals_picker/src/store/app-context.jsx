@@ -10,6 +10,9 @@ export const AppContext = createContext({
   userAnimals: [],
   modalOpen: "",
   isFetchingAnimals: "",
+  userAnimalsError: "",
+  animalsError: "",
+  isFetchingUserAnimals: "",
   onSelectAnimal: () => {},
   onStartRemoveAnimal: () => {},
   onCancelRemoveAnimal: () => {},
@@ -97,6 +100,9 @@ export default function ContextProvider({ children }) {
     onCancelRemoveAnimal: onCancelRemoveAnimal,
     onRemoveAnimal: onRemoveAnimal,
     isFetchingAnimals: isFetchingAnimals,
+    userAnimalsError: userAnimalsError,
+    animalsError: animalsError,
+    isFetchingUserAnimals: isFetchingUserAnimals,
   };
 
   // console.log("AppContext : ", ctxValues.animals);
